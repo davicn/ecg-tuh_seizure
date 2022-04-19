@@ -1,0 +1,1039 @@
+head	1.18;
+access;
+symbols;
+locks; strict;
+comment	@# @;
+
+
+1.18
+date	2022.03.31.13.15.38;	author picone;	state Exp;
+branches;
+next	1.17;
+
+1.17
+date	2020.05.07.00.52.32;	author tug48969;	state Exp;
+branches;
+next	1.16;
+
+1.16
+date	2020.04.27.19.47.51;	author tul10139;	state Exp;
+branches;
+next	1.15;
+
+1.15
+date	2020.03.29.06.37.53;	author picone;	state Exp;
+branches;
+next	1.14;
+
+1.14
+date	2019.03.15.18.36.40;	author tug90975;	state Exp;
+branches;
+next	1.13;
+
+1.13
+date	2019.02.15.19.44.17;	author tug90975;	state Exp;
+branches;
+next	1.12;
+
+1.12
+date	2018.11.15.03.43.54;	author tug90975;	state Exp;
+branches;
+next	1.11;
+
+1.11
+date	2018.10.19.02.13.50;	author picone;	state Exp;
+branches;
+next	1.10;
+
+1.10
+date	2018.10.12.19.01.23;	author tug90975;	state Exp;
+branches;
+next	1.9;
+
+1.9
+date	2018.08.16.22.20.52;	author tug90975;	state Exp;
+branches;
+next	1.8;
+
+1.8
+date	2018.08.16.22.14.28;	author tug90975;	state Exp;
+branches;
+next	1.7;
+
+1.7
+date	2018.08.16.21.40.59;	author tug90975;	state Exp;
+branches;
+next	1.6;
+
+1.6
+date	2018.08.15.21.02.01;	author tug90975;	state Exp;
+branches;
+next	1.5;
+
+1.5
+date	2018.08.08.17.18.02;	author tug90975;	state Exp;
+branches;
+next	1.4;
+
+1.4
+date	2018.08.02.05.41.45;	author tug90975;	state Exp;
+branches;
+next	1.3;
+
+1.3
+date	2018.07.23.15.32.44;	author tug90975;	state Exp;
+branches;
+next	1.2;
+
+1.2
+date	2018.04.15.19.43.12;	author picone;	state Exp;
+branches;
+next	1.1;
+
+1.1
+date	2018.04.15.19.15.05;	author picone;	state Exp;
+branches;
+next	;
+
+
+desc
+@initial version.
+@
+
+
+1.18
+log
+@updated.
+@
+text
+@File: _AAREADME.txt
+Database: TUH EEG Seizure Corpus (TUSZ)
+Version: 1.5.2
+-------------------------------------------------------------------------------
+
+----
+Change Log:
+
+(20220331) created a permanent archive by expanding links; updated stats
+(20200329) the dev and eval sets were manually reviewed by multiple annotators
+(20200427) the feat_f1w2 was created based on frame=1sec and window = 2 sec
+(20200427) the feat_f5w10 was created based on frame=5sec and window = 10 sec
+----
+
+This file contains some basic statistics about the TUH EEG Seizure
+Corpus, a corpus developed to motivate the development of high
+performance seizure detection algorithms using machine learning. This
+corpus is a subset of the TUH EEG Corpus and contains sessions that
+are known to contain seizure events. To balance the corpus, some
+sessions are provided that do not contain seizure events, so that the
+false alarm performance of a system can be tested.
+
+When you use this specific corpus in your research or technology
+development, we ask that you reference the corpus using this
+publication:
+
+ Shah, V., von Weltin, E., Lopez. S., McHugh, J., Veloso, L.,
+ Golmohammadi, M., Obeid, I., and Picone, J. (2018). The Temple University
+ Hospital Seizure Detection Corpus. Frontiers in Neuroinformatics. 12:83.
+ doi: 10.3389/fninf.2018.00083
+
+This publication can be retrieved from:
+
+https://www.isip.piconepress.com/publications/journals_refereed/2018/frontiers_neuroscience/tuh_eeg_seizure
+
+Our preferred reference for the TUH EEG Corpus, from which this
+seizure corpus was derived, is:
+
+ Obeid, I., & Picone, J. (2016). The Temple University Hospital EEG
+ Data Corpus. Frontiers in Neuroscience, Section Neural Technology,
+ 10, 196. http://doi.org/http://dx.doi.org/10.3389/fnins.2016.00196
+
+v1.5.2 of the TUH EEG Seizure Corpus was based on v1.1.0 of the
+TUH EEG Corpus.
+
+There are two main directories in this release: dev and train. 
+The train directory contains data you are allowed to use for the
+development of your technology. The dev data is disjoint from the
+training set and should only be used for testing.
+
+There is also a blind evaluation set that we are reserving for open source
+cmpetitions.
+
+The top-level directories:
+
+ edf/dev/01_tcp_ar
+ edf/dev/02_tcp_le
+ edf/dev/03_tcp_ar_a
+ edf/train/01_tcp_ar
+ edf/train/02_tcp_le
+ edf/train/03_tcp_ar_a
+
+refer to the appropriate channel configurations for the
+EEGs. 01_tcp_ar refers to an AR reference configuration, with
+annotations referencing a TCP format described below.
+
+The pathname of a typical EEG file can be explained as follows:
+
+ Filename:
+  edf/dev/01_tcp_ar/002/00000258/s002_2003_07_21/00000258_s002_t000.edf
+
+ Components:
+  edf: contains the edf data
+
+  dev: part of the dev_test set (vs.) train
+
+  01_tcp_ar: data that follows the averaged reference (AR) configuration,
+             while annotations use the TCP channel configutation
+
+  002: a three-digit identifier meant to keep the number of subdirectories
+       in a directory manageable. This follows the TUH EEG v1.1.0 convention.
+
+  00000258: official patient number that is linked to v1.1.0 of TUH EEG
+
+  s002_2003_07_21: session two (s002) for this patient. The session
+                   was archived on 07/21/2003.
+
+  00000258_s002_t000.edf: the actual EEG file. These are split into a series of
+  			  files starting with t000.edf, t001.edf, ... These
+			  represent pruned EEGs, so the original EEG is 
+			  split into these segments, and uninteresting
+			  parts of the original recording were deleted
+			  (common in clinical practice).
+
+The easiest way to access the annotations is through the spreadsheet
+provided (_SEIZURES_*.xlsx). This contains the start and stop time
+of each seizure event in an easy to understand format. Convert the
+file to .csv if you need a machine-readable version.
+
+There are six types of files in this release:
+
+ *.edf:    the EEG sampled data in European Data Format (edf)
+ *.txt:    the EEG report corresponding to the patient and session
+ *.tse:    term-based annotations using all available seizure type classes
+ *.tse_bi: same as *.tse except bi-class annotations (seizure/background) 
+ *.lbl:    event-based annotations using all available seizure type classes
+ *.lbl_bi: same as *.lbl except bi-class annotations (seizure/background)
+
+Event-based annotations are per-channel. This means the annotation contains,
+in addition to a start and stop time, a channel index. Seizures often can
+be observed on one or more channels and then spread to other channels.
+Event-based annotations capture this.
+
+Term-based annotations use one label that applies to all channels. These
+are most useful for machine learning research in which we tend to worry
+only about the overall classification of a segment and are not concerned
+about individual channels.
+
+Bi-class annotations use two labels: seizure and background. The multi-class
+annotations use all available seizure types. There are described in the
+spreadsheet (_SEIZURES_*.xlsx).
+
+Time-synchronous event (TSE) files use a simple format that looks like this:
+
+ 0.0000 490.0000 bckg 1.0000
+
+The fields are: start time in secs, stop time in secs, label and probability
+(by default, set to 1.0).
+
+Label files (LBL) are more complicated and essentially describe a graph
+that can represent a hierarchical annotation (e.g., FNSZ and GNSZ map to
+SEIZ). They contain the start and stop times, a channel index, a level
+index and probabilities for each class or symbol.
+
+Clinical EEGs use a variety of channel configurations. In the larger
+TUH EEG Corpus, there are over 40 different channel configurations. In
+this subset, there are two type of EEGs: averaged reference (AR) and
+linked ears reference (LE). Fortunately, all files in this subset
+contain the standard channels you would expect from a 10/20
+configuration, and all files can be converted to a TCP montage (which
+is what we use internally for our processing).
+
+What is somewhat confusing is that some patients have sessions listed
+under both 01_tcp_ar and 02_tcp_le. There are 50 unique patients in
+the development test set and 266 patients in the training set. But a find
+command will return slightly higher numbers:
+
+ find dev_test -mindepth 2 -maxdepth 2 | wc
+     65      65    1570
+ find train -mindepth 2 -maxdepth 2 | wc
+     303     303    7675
+
+because some patients appear in multiple montages:
+
+ ls -1 -d */*/*/*/00002991
+  edf/train/01_tcp_ar/029/00002991
+  edf/train/02_tcp_le/029/00002991
+  edf/train/03_tcp_ar_a/029/00002991
+ ls -1 -d */*/*/*/00002297
+  edf/dev/02_tcp_le/022/00002297
+  edf/dev/03_tcp_ar_a/022/00002297
+
+To learn more about this, please consult the following publication:
+
+ Lopez, S., Gross, A., Yang, S., Golmohammadi, M., Obeid, I., &
+ Picone, J. (2016). An Analysis of Two Common Reference Points for
+ EEGs. In IEEE Signal Processing in Medicine and Biology Symposium
+ (pp. 1–4). Philadelphia, Pennsylvania, USA. Available at:
+ https://www.isip.piconepress.com/publications/conference_proceedings/2016/ieee_spmb/montages/.
+
+The channel number in .lbl and .lbl_bi files refers to the channels
+defined using a standard ACNS TCP montage. This is our preferred way
+of viewing seizure data. The montage is defined as follows:
+
+ montage =  0, FP1-F7: EEG FP1-REF --  EEG F7-REF
+ montage =  1, F7-T3:  EEG F7-REF  --  EEG T3-REF
+ montage =  2, T3-T5:  EEG T3-REF  --  EEG T5-REF
+ montage =  3, T5-O1:  EEG T5-REF  --  EEG O1-REF
+ montage =  4, FP2-F8: EEG FP2-REF --  EEG F8-REF
+ montage =  5, F8-T4 : EEG F8-REF  --  EEG T4-REF
+ montage =  6, T4-T6:  EEG T4-REF  --  EEG T6-REF
+ montage =  7, T6-O2:  EEG T6-REF  --  EEG O2-REF
+ montage =  8, A1-T3:  EEG A1-REF  --  EEG T3-REF
+ montage =  9, T3-C3:  EEG T3-REF  --  EEG C3-REF
+ montage = 10, C3-CZ:  EEG C3-REF  --  EEG CZ-REF
+ montage = 11, CZ-C4:  EEG CZ-REF  --  EEG C4-REF
+ montage = 12, C4-T4:  EEG C4-REF  --  EEG T4-REF
+ montage = 13, T4-A2:  EEG T4-REF  --  EEG A2-REF
+ montage = 14, FP1-F3: EEG FP1-REF --  EEG F3-REF
+ montage = 15, F3-C3:  EEG F3-REF  --  EEG C3-REF
+ montage = 16, C3-P3:  EEG C3-REF  --  EEG P3-REF
+ montage = 17, P3-O1:  EEG P3-REF  --  EEG O1-REF
+ montage = 18, FP2-F4: EEG FP2-REF --  EEG F4-REF
+ montage = 19, F4-C4:  EEG F4-REF  --  EEG C4-REF
+ montage = 20, C4-P4:  EEG C4-REF  --  EEG P4-REF
+ montage = 21, P4-O2:  EEG P4-REF  --  EEG O2-REF
+
+For example, channel 1 is a difference between electrodes F7 and T3,
+and represents an arithmetic difference of the channels
+(F7-REF)-(T3-REF), which are channels contained in the EDF file.
+For files in the 02_tcp_le montage the channels are named as EEG P4-LE. All 
+channel derivations are the same. 
+For files in the 03_tcp_ar_a montage the derivations EEG A1-REF and 
+EEG A2-REF are not included.
+
+A spreadsheet is provided that classifies each seizure by type. This 
+spreadsheet contains a legend that explains these fields.
+
+Finally, here are some basic descriptive statistics about the data:
+
+EVAL SET (EVAL)
+
+total files: 1023
+total sessions: 152
+total patients: 50
+
+files with seizures: 235
+sessions with seizures: 78
+patients with seizures: 42
+total number of seizures: 511
+
+total duration: 542,125.00 secs
+total duration of files with seizures: 186,119.00 secs (34.33%)
+total background duration: 505,250.36920 secs (93.20%)
+*total seizure duration: 37,884.63080 secs (6.98%)
+
+Note: The background duration is calculated from the duration of the
+bckg labels, which when summed, is slightly larger than (100% - seiz dur).
+The former is 93.20%, while the latter is 93.02%. However, this
+difference is insignificant and a result of the end of file not coinciding
+exactly with the end of the last bckg label.
+
+-----------------------------
+
+DEVELOPMENT SET (DEV)
+
+total files: 1013
+total sessions: 238
+total patients: 50
+
+files with seizures: 280
+sessions with seizures: 104
+patients with seizures: 40
+total number of seizures: 673
+
+total duration: 613,232.00 secs
+total duration of files with seizures: 230,031.00 secs (37.51%)
+total background duration: 554,786.89340 secs (90.47%)
+total seizure duration: 58,445.10660 secs (9.53%)
+
+-----------------------------
+
+TRAINING SET (TRAIN)
+
+total files: 4599
+total sessions: 1185
+total patients: 592
+
+files with seizures: 869
+sessions with seizures: 343
+patients with seizures: 202
+total number of seizures: 2,377
+
+total duration: 2,726,212.00 secs
+total duration of files with seizures: 639,300.00 secs (23.45%)
+total background duration: 2,540,689.25700 secs (93.19%)
+total seizure duration: 169,793.74300 secs (6.23%)
+
+Note: The background duration is calculated from the duration of the
+bckg labels, which when summed, is slightly smaller than (100% - seiz dur).
+The former is 93.19%, while the latter is 93.77%. However, this
+difference is insignificant and a result of the end of file not coinciding
+exactly with the end of the last bckg label.
+
+-----------------------------
+
+If you have any additional comments or questions about the data,
+please direct them to help@@nedcdata.org.
+
+Best regards,
+
+Joe Picone
+@
+
+
+1.17
+log
+@Did it work?
+@
+text
+@d3 1
+a3 1
+Version: 1.5.1
+d9 4
+a12 4
+(20200329) the dev set and eval set were manually reviewed by multiple
+	   annotators.
+(20200427) the feat_f1w2 was created based on frame=1sec and window=2sec.
+(20200427) the feat_f5w10 was created based on frame=5sec and window=10sec.
+d43 1
+a43 1
+v1.5.1 of the TUH EEG Seizure Corpus was based on v1.1.0 of the
+d222 10
+a231 4
+total duration: 543,135.00 secs
+total background duration: 505250.37 secs
+total duration of files with seizures: 187,129.00 secs (34.45%)
+total seizure duration: 37884.6308 secs (6.97%)
+a246 1
+total background duration: 554,786.89 secs (90.47%)
+d248 2
+a249 1
+total seizure duration: 58,445.11 secs (9.53%)
+d255 1
+a255 1
+total files: 4597
+d259 1
+a259 1
+files with seizures: 867
+d262 1
+a262 1
+total number of seizures: 2,370
+d264 10
+a273 4
+total duration: 2,708,284.00 secs
+total background duration: 2,540,144,77 secs (93.79%)
+total duration of files with seizures: 635,490.00 secs (23.46%)
+total seizure duration: 168,139.23 secs (6.21%)
+@
+
+
+1.16
+log
+@*** empty log message ***
+@
+text
+@d223 1
+a223 1
+total background duration: 505,250.37 secs (93.02%)
+d225 1
+a225 1
+total seizure duration: 37,884.63 secs (6.98%)
+@
+
+
+1.15
+log
+@updated.
+@
+text
+@d11 2
+@
+
+
+1.14
+log
+@*** empty log message ***
+@
+text
+@d2 2
+a3 2
+Database: TUH EEG Seizure Corpus
+Version: 1.5.0
+d9 2
+a10 40
+(20190315) the training set was expanded to 4597 files. the calibration start
+	   and end times of the new files were recorded.
+
+(20181012) data was cleaned and annotation corrections were made. several files
+	   were removed from the training set.
+
+(20180816) data was cleaned up and several annotation corrections were made. 
+	   several files were removed from the training set and development 
+	   test set. calibration start and end times for the eval data set are 
+	   recorded in _SEIZURES.xlsx.
+
+(20180415) cleaned up the data for release.
+
+(20180323) made several annotation corrections. the evaluation (eval) set has 
+	   been renamed as the development test (dev_test) set. a major 
+	   addition to this release is a record of calibration start and end 
+	   times in the beginning of the file that is included in 
+	   _SEIZURES.xlsx.
+
+(20171206) added new files to evaluation and training sets. files in the
+	   montage 03_tcp_ar_a have been added. patient numbers have been 
+	   changed to reflect TUH EEG v1.1.0.
+
+(20170804) added annotations for the type of seizure event and replaced
+	   rec files with tse and lbl files. added seizure annotations to
+	   one file in the training set.
+
+(20170701) includes the expanded training set, sub-one-second resolution
+ 	   on the start/stop times of the annotations, expanded
+	   documentation on the type of EEG session, and repair of
+	   corrupted headers.
+
+(20170615) several annotation errors were fixed. the annotation files
+           were reduced to biclass (seizure/no-seizure). a detailed
+           spreadsheet was included describing the data.
+
+(20170427) changed the filenames to match our upcoming TUH EEG release
+
+(20170426) naming conventions on the top-level directories
+           and improved documentation.
+d41 1
+a41 1
+v1.5.0 of the TUH EEG Seizure Corpus was based on v1.1.0 of the
+d44 1
+a44 1
+There are two main directories in this release: dev_test and train. 
+d46 1
+a46 1
+development of your technology. The dev_test data is disjoint from the
+d49 3
+d54 3
+a56 3
+ edf/dev_test/01_tcp_ar
+ edf/dev_test/02_tcp_le
+ edf/dev_test/03_tcp_ar_a
+d68 1
+a68 1
+  edf/dev_test/01_tcp_ar/002/00000258/s002_2003_07_21/00000258_s002_t000.edf
+d73 1
+a73 1
+  dev_test: part of the dev_test set (vs.) train
+d158 2
+a159 2
+  edf/dev_test/02_tcp_le/022/00002297
+  edf/dev_test/03_tcp_ar_a/022/00002297
+d209 19
+a227 1
+DEVELOPMENT TEST SET
+d233 9
+a241 9
+files with seizures: 286
+sessions with seizures: 108
+patients with seizures: 39
+total number of seizures: 685
+
+total seizure duration: 61036.8393 secs (9.9500%)
+total background duration: 552195.1607 secs
+total duration: 613232.0000 secs
+total duration of files with seizures: 235763.0000 secs (38.4400%)
+d245 1
+a245 1
+TRAINING SET
+d254 1
+a254 1
+total number of seizures: 2370
+d256 4
+a259 4
+total seizure duration: 168139.2295 secs (6.2000%)
+total background duration: 2540144.7705 secs
+total duration: 2708284.0000 secs
+total duration of files with seizures: 635490.0000 secs (23.4600%)
+d268 1
+a268 40
+Sean Ferrell
+NEDC Data Resources Development Manager
+
+=====================================================================
+
+Comparison to v1.4.0:
+
+DEVELOPMENT TEST SET
+
+total files: 1013
+total sessions: 238
+total patients: 50
+
+files with seizures: 284
+sessions with seizures: 107
+patients with seizures: 39
+total number of seizures: 685
+
+total seizure duration: 60882.8694 secs (9.9200%)
+total background duration: 552349.1306 secs
+total duration: 613232.0000 secs
+total duration of files with seizures: 234007.0000 secs (38.1500%)
+
+TRAINING SET
+
+total files: 1984
+total sessions: 579
+total patients: 264
+
+files with seizures: 417
+sessions with seizures: 197
+patients with seizures: 130
+total number of seizures: 1327
+
+total seizure duration: 90464.0882 secs (7.6200%)
+total background duration: 1096377.9118 secs
+total duration: 1186842.0000 secs
+total duration of files with seizures: 313490.0000 secs (26.4100%)
+
+---
+@
+
+
+1.13
+log
+@*** empty log message ***
+@
+text
+@d9 1
+a9 1
+(20190215) the training set was expanded to 4597 files. the calibration start
+d264 13
+@
+
+
+1.12
+log
+@*** empty log message ***
+@
+text
+@d3 1
+a3 1
+Version: 1.4.0
+d9 3
+d79 1
+a79 1
+v1.4.0 of the TUH EEG Seizure Corpus was based on v1.1.0 of the
+a263 13
+total files: 1984
+total sessions: 579
+total patients: 264
+
+files with seizures: 417
+sessions with seizures: 197
+patients with seizures: 130
+total number of seizures: 1327
+
+total seizure duration: 90464.0882 secs (7.6200%)
+total background duration: 1096377.9118 secs
+total duration: 1186842.0000 secs
+total duration of files with seizures: 313490.0000 secs (26.4100%)
+d277 1
+a277 1
+Comparison to v1.3.0:
+d297 2
+a298 2
+total files: 1987
+total sessions: 580
+d301 9
+a309 9
+files with seizures: 412
+sessions with seizures: 194
+patients with seizures: 128
+total number of seizures: 1247
+
+total seizure duration: 89125.9710 secs (7.5000%)
+total background duration: 1098164.0290 secs
+total duration: 1187290.0000 secs
+total duration of files with seizures: 309542.0000 secs (26.0700%)
+@
+
+
+1.11
+log
+@updated.
+@
+text
+@d60 4
+a63 4
+ Golmohammadi, M., Shah, V., Lopez, S., Ziyabari, S., Yang, S.,
+ Camaratta, J., Obeid, J. and Picone, J. (2017). The TUH EEG Seizure Corpus.
+ In American Clinical Neurophysiology Society (p. 1). Phoenix, Arizona,
+ USA.
+d67 1
+a67 1
+https://www.isip.piconepress.com/publications/conference_presentations/2017/acns/tuh_eeg_seizures/
+d76 1
+a76 1
+v1.3.0 of the TUH EEG Seizure Corpus was based on v1.1.0 of the
+@
+
+
+1.10
+log
+@*** empty log message ***
+@
+text
+@d4 1
+a4 1
+--------------------------------------------------------------------------------
+@
+
+
+1.9
+log
+@*** empty log message ***
+@
+text
+@d3 1
+a3 1
+Version: 1.3.0
+d9 3
+d247 2
+a248 2
+files with seizures: 284
+sessions with seizures: 107
+d252 2
+a253 2
+total seizure duration: 60882.8694 secs (9.9200%)
+total background duration: 552349.1306 secs
+d255 1
+a255 1
+total duration of files with seizures: 234007.0000 secs (38.1500%)
+d261 2
+a262 2
+total files: 1987
+total sessions: 580
+d265 9
+a273 9
+files with seizures: 412
+sessions with seizures: 194
+patients with seizures: 128
+total number of seizures: 1247
+
+total seizure duration: 89125.9710 secs (7.5000%)
+total background duration: 1098164.0290 secs
+total duration: 1187290.0000 secs
+total duration of files with seizures: 309542.0000 secs (26.0700%)
+d287 1
+a287 1
+Comparison to v1.2.1:
+d291 13
+a303 10
+ Files and Sessions:
+  files:         1015   files containing seizures:      273
+  sessions:       239   sessions containing seizures:   102
+  patients:        50   patients containing seizures:    38
+
+ Signal Data:
+  seizures:              58,322.3671 secs (  9.45%)
+  background:           558,779.6329 secs ( 90.55%)
+  total:                617,102.0000 secs (100.00%)
+  files w/seizures:     225,017.0000 secs ( 36.46% of the total data)
+d307 13
+a319 10
+ Files and Sessions:
+  files           1989  files containing seizures:      384
+  sessions         581  sessions containing seizures:   181
+  patients         264  patients containing seizures:   118
+
+ Signal Data:
+  seizures:              78,838.0892 secs (  6.63%)
+  background:         1,109,474.9108 secs ( 93.37%)
+  total:              1,188,313.0000 secs (100.00%)
+  files w/seizures:     288,650.0000 secs ( 24.29% of the total data)
+@
+
+
+1.8
+log
+@*** empty log message ***
+@
+text
+@d9 4
+a12 4
+(20180816) the evaluation set has been added to the database. Several files 
+	   were removed from the training set and development test set.
+	   calibration start and end times for the eval set are recorded in
+	   _SEIZURES.xlsx.
+d76 1
+a76 1
+There are three main directories in this release: dev_test, eval, and train. 
+d79 1
+a79 2
+training set and should only be used for testing. The evaluation set is 
+meant for the final test of your machine learning technology.
+a85 2
+ edf/eval/01_tcp_ar
+ edf/eval/03_tcp_ar_a
+d102 1
+a102 1
+  dev_test: part of the dev_test set (vs.) train or eval
+a252 18
+
+-----------------------------
+
+EVALUATION SET
+
+total files: 1023
+total sessions: 152
+total patients: 50
+
+files with seizures: 246
+sessions with seizures: 80
+patients with seizures: 41
+total number of seizures: 533
+
+total seizure duration: 39215.1943 secs (7.2200%)
+total background duration: 503919.8057 secs
+total duration: 543135.0000 secs
+total duration of files with seizures: 194239.0000 secs (35.7600%)
+@
+
+
+1.7
+log
+@*** empty log message ***
+@
+text
+@d5 1
+@
+
+
+1.6
+log
+@*** empty log message ***
+@
+text
+@d8 1
+a8 1
+(20180802) the evaluation set has been added to the database. Several files 
+d10 2
+d235 2
+a236 3
+A major addition to this release is the inclusion of a
+spreadsheet that classifies each seizure by type. The spreadsheet contains
+a legend that explains these fields.
+@
+
+
+1.5
+log
+@*** empty log message ***
+@
+text
+@d284 1
+a284 1
+total number of seizures: 1248
+d286 2
+a287 2
+total seizure duration: 89071.6150 secs (7.5000%)
+total background duration: 1098218.3850 secs
+@
+
+
+1.4
+log
+@*** empty log message ***
+@
+text
+@d281 2
+a282 2
+files with seizures: 413
+sessions with seizures: 195
+d284 1
+a284 1
+total number of seizures: 1249
+d286 2
+a287 2
+total seizure duration: 89092.3572 secs (7.5000%)
+total background duration: 1098197.6428 secs
+d289 1
+a289 1
+total duration of files with seizures: 310201.0000 secs (26.1200%)
+@
+
+
+1.3
+log
+@*** empty log message ***
+@
+text
+@d3 2
+a4 2
+Version: 1.2.1
+
+d8 3
+d70 1
+a70 1
+v1.2.1 of the TUH EEG Seizure Corpus was based on v1.1.0 of the
+d73 2
+a74 2
+There are two main directories in this release: dev_test and train. The
+train directory contains data you are allowed to use for the
+d76 2
+a77 1
+training set and should only be used for testing.
+d84 2
+d102 1
+a102 1
+  dev_test: part of the dev_test set (vs.) train
+d187 2
+a188 2
+  edf/eval/02_tcp_le/022/00002297
+  edf/eval/03_tcp_ar_a/022/00002297
+d241 31
+a271 4
+ Files and Sessions:
+  files:         1015   files containing seizures:      273
+  sessions:       239   sessions containing seizures:   102
+  patients:        50   patients containing seizures:    38
+d273 1
+a273 5
+ Signal Data:
+  seizures:              58,322.3671 secs (  9.45%)
+  background:           558,779.6329 secs ( 90.55%)
+  total:                617,102.0000 secs (100.00%)
+  files w/seizures:     225,017.0000 secs ( 36.46% of the total data)
+d277 13
+a289 4
+ Files and Sessions:
+  files           1989  files containing seizures:      384
+  sessions         581  sessions containing seizures:   181
+  patients         264  patients containing seizures:   118
+d291 1
+a291 5
+ Signal Data:
+  seizures:              78,838.0892 secs (  6.63%)
+  background:         1,109,474.9108 secs ( 93.37%)
+  total:              1,188,313.0000 secs (100.00%)
+  files w/seizures:     288,650.0000 secs ( 24.29% of the total data)
+a292 1
+---
+d298 1
+a298 1
+Eva von Weltin
+d302 4
+a305 2
+Comparison to v1.2.0:
+EVALUATION SET
+d308 2
+a309 2
+  files:         1032   files containing seizures:      257
+  sessions:       239   sessions containing seizures:    98
+d313 4
+a316 4
+  seizures:              55,764.9344 secs (  9.02%)
+  background:           562,331.0656 secs ( 90.98%)
+  total:                618,096.0000 secs (100.00%)
+  files w/seizures:     212,175.0000 secs ( 34.33% of the total data)
+d321 3
+a323 3
+  files           2032  files containing seizures:      385
+  sessions         583  sessions containing seizures:   182
+  patients         265  patients containing seizures:   119
+d326 5
+a330 4
+  seizures:              76,517.4072 secs (  6.39%)
+  background:         1,119,863.5928 secs ( 93.61%)
+  total:              1,196,381.0000 secs (100.00%)
+  files w/seizures:     289,251.0000 secs ( 24.18% of the total data)
+@
+
+
+1.2
+log
+@minor cosmetic updates.
+@
+text
+@d91 1
+a91 1
+  edf/eval/01_tcp_ar/047/00004784/s03_2003_08_12/00004784_s03_a03.edf
+d96 1
+a96 1
+  eval: part of the eval set (vs.) train
+d101 1
+a101 1
+  047: a three-digit identifier meant to keep the number of subdirectories
+d104 1
+a104 2
+  00002289: an index that crossreferences this patient
+            to v0.1.1 of the TUH EEG Corpus
+d106 2
+a107 2
+  s003_2012_03_30: session three (s003) for this patient. The session
+                   was archived on 08/12/2003.
+d109 1
+a109 1
+  00004784_s003_t003.edf: the actual EEG file. These are split into a series of
+@
+
+
+1.1
+log
+@Initial revision
+@
+text
+@d8 2
+d67 1
+a67 1
+v1.2.0 of the TUH EEG Seizure Corpus was based on v1.1.0 of the
+d77 6
+a82 6
+ dev_test/01_tcp_ar
+ dev_test/02_tcp_le
+ dev_test/03_tcp_ar_a
+ train/01_tcp_ar
+ train/02_tcp_le
+ train/03_tcp_ar_a
+d91 1
+a91 1
+  dev_test/01_tcp_ar/00004784/s03_2003_08_12/00004784_s03_a03.edf
+d94 4
+a97 1
+  dev_test: part of the dev_test set (vs. train)
+d99 5
+a103 1
+             while annotations use the TCP channel configuration
+d105 2
+a106 1
+            to v1.1.0 of the TUH EEG Corpus
+d108 2
+a109 1
+                 was archived on 08/12/2003.
+d111 5
+a115 4
+           files starting with t000.edf, t001.edf, ... These represent
+           pruned EEGs, so the original EEG is split into these 
+           segments, and uninteresting parts of the original recording
+           were deleted (common in clinical practice).
+d177 7
+a183 7
+ ls -1 -d */*/00002991
+  train/01_tcp_ar/00002991
+  train/02_tcp_le/00002991
+  train/03_tcp_ar_a/00002991
+ ls -1 -d */*/00002297
+  dev_test/02_tcp_le/00002297
+  dev_test/03_tcp_ar_a/00002297
+d259 1
+a260 1
+
+@
