@@ -1,0 +1,6 @@
+- Selecionaremos apenas os seguitnes tipos de crises
+    - FNSZ	- 8	- Focal Non-Specific Seizure
+    - GNSZ	- 9	- Generalized Non-Specific Seizure
+    - CPSZ	- 11	- Complex Partial Seizure
+    - TNSZ	- 13	- Tonic Seizure
+    - TCSZ	- 15	- Tonic Clonic Seizure
