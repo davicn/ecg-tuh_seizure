@@ -4,8 +4,8 @@ clear all;
 d = dotenv('./.env');
 
 %% Carregando dados
-f = d.env.ROOT_PATH + '/resources/reports/ecg_files_dataset_dev.csv';
-path = d.env.DATALAKE_PATH;
+f = 'C:\Users\davin\Documents\doutorado\ecg-tuh_seizure\resources\reports\ecg_files_eval.csv'; % d.env.ROOT_PATH + '/resources/reports/ecg_files_dataset_train.csv'; 
+path = 'G:\DATALAKES'; %d.env.DATALAKE_PATH;
 
 df = readtable(f);
 
@@ -17,9 +17,11 @@ for i=1:height(df)
         b = table2cell(df(i,'file'));
         a = cellstr(b);
         c = char(a);
-        d = split(strrep(c,'tse','parquet'),'/');
+        d = split(strrep(c,'.tse','.parquet'),'/');
 
-        file_path = join([path, "tuh_seizures/raw/ecg/dev",d{end}],"/");
+        file_ = join([path, "\tuh_seizures\raw\ecg\eval\",d{end}]);
+        file__ = strrep(file_, '/','\');
+        file_path = strrep(file__, ' ','');
     
         % trabalhando freq
         bb = table2cell(df(i,'freq'));
@@ -31,6 +33,10 @@ for i=1:height(df)
 
         fim = table2cell(df(i,'Stop'));
         fim = fim{1};
+
+        % disp(file_path);
+
+        % parquetread('G:\DATALAKES\tuh_seizures\raw\ecg\train\00000002_s001_t000.parquet')
 
         % carregando parquet
         s = parquetread(file_path);
@@ -46,7 +52,7 @@ for i=1:height(df)
         
         name_mat = strrep(d{end}, 'parquet','mat');
         
-        path_file = path + '/tuh_seizures/processed/ecg_beats/' + name_mat;
+        path_file = join([path, '\tuh_seizures\processed\ecg_beats\eval\',name_mat]); %path + '\tuh_seizures\processed\ecg_beats\' + name_mat;
         
         disp(path_file);
 
