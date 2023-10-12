@@ -5,7 +5,7 @@ d = dotenv('./.env');
 
 lake_path = 'G:\DATALAKES';
 
-files_path =  join([lake_path,'\tuh_seizures\processed\ecg_beats\eval\files.csv'],'/');
+files_path =  join([lake_path,'\tuh_seizures\processed\ecg_beats\dev\files.csv'],'/');
 
 symbols = textread(files_path,'%s');
 
@@ -16,7 +16,7 @@ for i = 2:st(1)
     file = s(i);
 
     % lake_path = d.env.DATALAKE_PATH;
-    path_file = join([lake_path, 'tuh_seizures\processed\ecg_beats\eval' ,file],'\');
+    path_file = join([lake_path, 'tuh_seizures\processed\ecg_beats\dev' ,file],'\');
 
     f = load(path_file);
 
@@ -43,11 +43,11 @@ for i = 2:st(1)
     
     label = f.seizure_type;
     
-    name = join([lake_path , 'tuh_seizures\processed\features_v2\eval' , file],'\');
+    name = join([lake_path , 'tuh_seizures\processed\features_v2\dev' , file],'\');
     
     disp(name)
 
-    save(name,'vars', 'skews', 'kurs', 'entropy_log_energy','entropy_shannon','var_log_energy', 'skew_log_energy', 'kur_log_energy', 'var_shannon', 'skew_shannon', 'kur_shannon');
+    save(name,'vars', 'skews', 'kurs', 'entropy_log_energy','entropy_shannon','var_log_energy', 'skew_log_energy', 'kur_log_energy', 'var_shannon', 'skew_shannon', 'kur_shannon','label');
 end
 
 
